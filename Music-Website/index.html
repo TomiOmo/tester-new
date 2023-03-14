@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Selena Gomez</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    * {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body {
+      margin: 0px;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdfbf8;
+      background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/069/797/original/FjOt_wHaUAEF751.jpeg?1677839981");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    header {
+      color: #7a0036;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #7a0036;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px;
+      color: #fdfbf8;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline #fdfbf8;
+      color: #fdfbf8;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 0 0 10px;
+      color: #7a0036;
+      font-style: italic;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 0 0 5px;
+      font-size: 16px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .play-pause {
+      display: flex;
+      justify-content: center;
+    }
+    .answer {
+      margin: 0 auto;
+      padding: 10px;
+      text-align: center;
+      border-radius: 4%;
+      border-color: #000;
+      background-color: #7a0036;
+      color: #fdfbf8;
+    }
+    .answer:hover {
+      box-shadow: #ccc;
+      background-color: antiquewhite;
+      color: #7a0036;
+      transition: all 0.3s ease-in-out;
+    }
+    .play,
+    .pause {
+      width: 70px;
+      height: 70px;
+      background-color: #fdfbf8;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .play:before {
+      content: "\25B6"; /* Play icon */
+      color: #7a0036;
+      font-size: 30px;
+    }
+
+    .pause:before {
+      content: "\II"; /* Pause icon */
+      color: #7a0036;
+      font-size: 30px;
+    }
+
+    .play:hover,
+    .pause:hover {
+      background-color: #fc0072;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #7a0036;
+      color: #fdfbf8;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <header>
+      <h1>Selena Gomez Music Page</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#albums">Albums</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#tour">Tour</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section id="bio">
+        <h2>Bio</h2>
+        <p>
+          Selena Marie Gomez is an American singer, actress, and producer. Born
+          in Grand Prairie, Texas, she was first featured on the children's
+          series Barney &amp; Friends in the early 2000s. Gomez found greater
+          success with Disney Channel, starring in the series Wizards of Waverly
+          Place (2007–2012).
+        </p>
+      </section>
+      <section id="albums">
+        <h2>Albums</h2>
+        <ul>
+          <li>Stars Dance (2013)</li>
+          <li>Revival (2015)</li>
+          <li>Rare (2020)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is your favourtie Selena Gomez song?</h2>
+        <button class="answer">Click Here to give your answer</button>
+      </section>
+
+      <section id="music">
+        <h2>Music Player</h2>
+        <audio id="song">
+          <source
+            src="https://open.spotify.com/embed/track/0WtM2NBVQNNJLh6scP13H8?utm_source=generator"
+            type="audio/mp3"
+          />
+        </audio>
+        <div class="play-pause">
+          <button class="play" onclick="play()"></button>
+        </div>
+      </section>
+
+      <section id="tour">
+        <h2>Tour</h2>
+        <p>Stay tuned for Selena's upcoming tour dates!</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2020 Selena Gomez. All rights reserved.</p>
+    </footer>
+    <script>
+      const song = document.getElementById("song");
+      const playButton = document.querySelector(".play");
+
+      playButton.addEventListener("click", () => {
+        if (song.paused) {
+          song.play();
+
+          playButton.classList.remove("play");
+          playButton.classList.add("pause");
+        } else {
+          song.pause();
+          playButton.classList.remove("pause");
+          playButton.classList.add("play");
+        }
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
